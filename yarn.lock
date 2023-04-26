@@ -16,7 +16,7 @@
 
 "@ant-design/icons-vue@^6.1.0":
   version "6.1.0"
-  resolved "https://registry.npmjs.org/@ant-design/icons-vue/-/icons-vue-6.1.0.tgz"
+  resolved "https://registry.yarnpkg.com/@ant-design/icons-vue/-/icons-vue-6.1.0.tgz#f9324fdc0eb4cea943cf626d2bf3db9a4ff4c074"
   integrity sha512-EX6bYm56V+ZrKN7+3MT/ubDkvJ5rK/O2t380WFRflDcVFgsvl3NLH7Wxeau6R8DbrO5jWR6DSTC3B6gYFp77AA==
   dependencies:
     "@ant-design/colors" "^6.0.0"
