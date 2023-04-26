@@ -12,6 +12,8 @@ export const useFeatureAddTaskStore = defineStore("tasksAddFeature", () => {
       await axios.post(`${import.meta.env.VITE_APP_API_URL}`, data);
       await taskStore.getTaskList();
       await modalStore.closeModal();
+
+      modalStore.newTask = { title: "", description: "", checked: false };
     } catch (error: any) {
       console.log(error.message);
     }
