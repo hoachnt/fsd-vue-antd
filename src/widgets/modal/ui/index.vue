@@ -25,10 +25,17 @@
       v-model:value="modalStore.newTask.description"
       placeholder="Description"
     />
+    <Alert
+      v-if="addTaskStore.validation"
+      message="Title is empty"
+      type="error"
+      show-icon
+      :class="styles.error_alert"
+    />
   </Modal>
 </template>
 <script setup lang="ts">
-import { Modal, Input } from "ant-design-vue";
+import { Modal, Input, Alert } from "ant-design-vue";
 import { AAddTask, taskFeatureAddModel } from "../../../features/add-task";
 import { AButton } from "../../../shared/button";
 import { modalModel } from "../../modal";
