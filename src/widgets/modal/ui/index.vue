@@ -6,7 +6,9 @@
   >
   <Modal v-model:visible="modalStore.visible" title="Create a task">
     <template #footer>
-      <a-button key="back" @click="modalStore.closeModal" danger>Close</a-button>
+      <a-button key="back" @click="modalStore.closeModal" danger
+        >Close</a-button
+      >
       <AAddTask @click="addTaskStore.addTask(modalStore.newTask)"
         >Create</AAddTask
       >

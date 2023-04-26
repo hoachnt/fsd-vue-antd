@@ -5,13 +5,21 @@ import { taskModel } from "../../../entities/tasks";
 import { modalModel } from "../../../widgets/modal";
 
 export const useFeatureAddTaskStore = defineStore("tasksAddFeature", () => {
+  interface IData {
+    title: string;
+    description: string;
+  }
+
   const taskStore = taskModel();
   const modalStore = modalModel();
   const loading = ref(false);
 
-  async function addTask(data: object) {
+  async function addTask(data: IData) {
     try {
+      if (data.title.length === 0) return;
+
       loading.value = true;
+
       await axios.post(`${import.meta.env.VITE_APP_API_URL}`, data);
       await taskStore.getTaskList();
 
