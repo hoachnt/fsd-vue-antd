@@ -4,7 +4,11 @@
     :class="taskListPageStyles.add_task_modal"
     >+</AButton
   >
-  <Modal v-model:visible="modalStore.visible" title="Create a task">
+  <Modal
+    v-model:visible="modalStore.visible"
+    title="Create a task"
+    :after-close="() => (addTaskStore.validation = false)"
+  >
     <template #footer>
       <a-button key="back" @click="modalStore.closeModal" danger
         >Close</a-button
