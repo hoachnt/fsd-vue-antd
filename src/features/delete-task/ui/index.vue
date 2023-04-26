@@ -1,0 +1,12 @@
+<template>
+  <AButton danger @click="taskStore.deleteTask(props.id)">Delete</AButton>
+</template>
+<script setup lang="ts">
+import { AButton } from "../../../shared/button";
+import { taskFeatureDeleteModel } from "../model";
+
+const taskStore = taskFeatureDeleteModel();
+const props = defineProps({
+  id: Number,
+});
+</script>
