@@ -2,6 +2,7 @@
   <AButton
     @click="modalStore.showModal"
     size="large"
+    type="primary"
     :class="taskListPageStyles.add_task_modal"
     ><plus-outlined
   /></AButton>
@@ -11,9 +12,7 @@
     :after-close="() => (addTaskStore.validation = false)"
   >
     <template #footer>
-      <a-button key="back" @click="modalStore.closeModal" danger
-        >Close</a-button
-      >
+      <a-button key="back" @click="modalStore.closeModal">Cancel</a-button>
       <AAddTask @click="addTaskStore.addTask(modalStore.newTask)"
         >Create</AAddTask
       >
