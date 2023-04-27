@@ -1,9 +1,10 @@
 <template>
   <AButton
     @click="modalStore.showModal"
+    size="large"
     :class="taskListPageStyles.add_task_modal"
-    >+</AButton
-  >
+    ><plus-outlined
+  /></AButton>
   <Modal
     v-model:visible="modalStore.visible"
     title="Create a task"
@@ -40,6 +41,7 @@
 </template>
 <script setup lang="ts">
 import { Modal, Input, Alert } from "ant-design-vue";
+import { PlusOutlined } from "@ant-design/icons-vue";
 import { AAddTask, taskFeatureAddModel } from "../../../features/add-task";
 import { AButton } from "../../../shared/button";
 import { modalModel } from "../../modal";

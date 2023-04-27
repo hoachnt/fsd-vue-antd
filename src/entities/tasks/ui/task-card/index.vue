@@ -7,12 +7,17 @@
       <template #title>
         <a href="#">{{ props.item.title }}</a>
       </template>
-      <template #description> {{ props.item.description }} </template>
+      <template #description>
+        <p>{{ props.item.description }}</p>
+        <Tag color="blue">
+          {{ new Date(props.item.date_created).toLocaleDateString("en") }}
+        </Tag>
+      </template>
     </ListItemMeta>
   </ListItem>
 </template>
 <script setup lang="ts">
-import { ListItemMeta, ListItem } from "ant-design-vue";
+import { ListItemMeta, ListItem, Tag } from "ant-design-vue";
 
 interface IItem {
   title: string;
