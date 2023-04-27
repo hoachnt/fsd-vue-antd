@@ -21,8 +21,10 @@ export const useFeatureCheckedTaskStore = defineStore(
 
         if (route.path === "/") {
           await taskStore.getTaskList();
-        } else {
+        } else if (route.path === "/finished") {
           await taskStore.getFinishedTaskList();
+        } else {
+          await taskStore.getUnFinishedTaskList();
         }
       } catch (error: any) {
         console.log(error.message);
