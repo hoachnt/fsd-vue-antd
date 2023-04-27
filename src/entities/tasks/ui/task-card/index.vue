@@ -1,7 +1,7 @@
 <template>
   <ListItem>
     <template #actions>
-      <slot name="actions"/>
+      <slot name="actions" />
     </template>
     <ListItemMeta>
       <template #title>
@@ -18,6 +18,7 @@ interface IItem {
   title: string;
   description: string;
   checked: boolean;
+  date_created: string;
 }
 
 const props = defineProps<{ item: IItem }>();

@@ -9,6 +9,9 @@
       <RadioButton value="2" @click="$router.push('/finished')"
         >Finished Tasks</RadioButton
       >
+      <RadioButton value="3" @click="$router.push('/unfinished')"
+        >Unfinished Tasks</RadioButton
+      >
     </RadioGroup>
   </Layout>
 </template>

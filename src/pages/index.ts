@@ -7,6 +7,11 @@ export const routes = [
     component: () => import("./finished-tasks-page"),
     name: "Finished Tasks",
   },
+  {
+    path: "/unfinished",
+    component: () => import("./unFinished-tasks-page"),
+    name: "Unfinished Tasks",
+  },
 ];
 
 export { Routing };
