@@ -9,6 +9,8 @@ export const useModalStore = defineStore("modal", () => {
     description: "",
     checked: false,
     date: undefined,
+    date_start: "",
+    date_end: "",
   });
   const visible = ref(false);
 

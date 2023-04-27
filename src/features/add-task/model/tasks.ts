@@ -52,6 +52,8 @@ export const useFeatureAddTaskStore = defineStore("tasksAddFeature", () => {
         description: "",
         checked: false,
         date: undefined,
+        date_start: "",
+        date_end: "",
       };
     } catch (error: any) {
       console.log(error.message);

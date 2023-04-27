@@ -30,7 +30,8 @@ interface IItem {
   title: string;
   description: string;
   checked: boolean;
-  date_created: string;
+  date_start: string;
+  date_end: string;
 }
 
 const props = defineProps<{ item: IItem }>();
