@@ -4,20 +4,48 @@ import { ref } from "vue";
 
 export const useTaskStore = defineStore("tasks", () => {
   const listItems = ref<object[]>([]);
+  const listItemsFinished = ref<object[]>([]);
   const loading = ref(false);
+  const url = `${import.meta.env.VITE_APP_API_URL}`;
 
   async function getTaskList() {
     try {
       loading.value = true;
 
-      let taskList = await axios.get(`${import.meta.env.VITE_APP_API_URL}`);
+      let taskList = await axios.get(url);
 
+      listItems.value = await taskList.data.data;
       loading.value = false;
-      listItems.value = taskList.data.data;
+    } catch (error: any) {
+      console.log(error.message);
+    }
+  }
+  async function getFinishedTaskList() {
+    try {
+      loading.value = true;
+
+      let taskList = await axios.get(url, {
+        params: {
+          filter: {
+            checked: {
+              _eq: "true",
+            },
+          },
+        },
+      });
+
+      listItemsFinished.value = await taskList.data.data;
+      loading.value = false;
     } catch (error: any) {
       console.log(error.message);
     }
   }
 
-  return { listItems, getTaskList, loading };
+  return {
+    listItems,
+    getTaskList,
+    getFinishedTaskList,
+    loading,
+    listItemsFinished,
+  };
 });

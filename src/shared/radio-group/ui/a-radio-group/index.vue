@@ -2,7 +2,6 @@
   <Layout :class="styles.root">
     <RadioGroup
       v-model:value="radioStore.activeValue"
-      centered
       :class="styles.radio_group"
       button-style="solid"
     >

@@ -1,7 +1,7 @@
 <template>
   <Checkbox
-    v-model:checked="item.checked"
-    @click="taskStore.checkedTask(item)"
+    :checked="props.item.checked"
+    @click="taskStore.checkedTask(props.item)"
   />
 </template>
 <script setup lang="ts">
@@ -16,5 +16,4 @@ interface IItem {
 
 const taskStore = taskFeatureCheckedModel();
 const props = defineProps<{ item: IItem }>();
-const item = props.item;
 </script>
