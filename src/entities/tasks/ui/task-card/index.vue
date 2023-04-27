@@ -5,9 +5,9 @@
     </template>
     <ListItemMeta>
       <template #title>
-        <a href="#">{{ item.title }}</a>
+        <a href="#">{{ props.item.title }}</a>
       </template>
-      <template #description> {{ item.description }} </template>
+      <template #description> {{ props.item.description }} </template>
     </ListItemMeta>
   </ListItem>
 </template>
@@ -21,5 +21,4 @@ interface IItem {
 }
 
 const props = defineProps<{ item: IItem }>();
-const item = props.item;
 </script>
