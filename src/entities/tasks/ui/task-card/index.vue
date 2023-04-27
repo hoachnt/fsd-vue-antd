@@ -9,9 +9,16 @@
       </template>
       <template #description>
         <p>{{ props.item.description }}</p>
-        <Tag color="blue">
-          {{ new Date(props.item.date_created).toLocaleDateString("en") }}
-        </Tag>
+        <div
+          v-if="props.item.date_start !== null && props.item.date_end !== null"
+        >
+          <Tag color="blue">
+            {{ new Date(props.item.date_start).toLocaleDateString("en") }}
+          </Tag>
+          <Tag color="blue">
+            {{ new Date(props.item.date_end).toLocaleDateString("en") }}
+          </Tag>
+        </div>
       </template>
     </ListItemMeta>
   </ListItem>

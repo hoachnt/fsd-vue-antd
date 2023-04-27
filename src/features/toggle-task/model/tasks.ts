@@ -11,6 +11,8 @@ export const useFeatureCheckedTaskStore = defineStore(
 
     async function checkedTask(checkedTask: any) {
       try {
+        taskStore.loading = true;
+
         await axios({
           method: "patch",
           url: `${import.meta.env.VITE_APP_API_URL}/${checkedTask.id}`,
@@ -18,6 +20,8 @@ export const useFeatureCheckedTaskStore = defineStore(
             checked: !checkedTask.checked,
           },
         });
+
+        taskStore.loading = false;
 
         if (route.path === "/") {
           await taskStore.getTaskList();

@@ -29,6 +29,12 @@
       v-model:value="modalStore.newTask.description"
       placeholder="Description"
     />
+    <RangePicker
+      v-model:value="modalStore.newTask.date"
+      show-time
+      :class="styles.input"
+      size="large"
+    />
     <Alert
       v-if="addTaskStore.validation"
       message="Title is empty"
@@ -39,7 +45,7 @@
   </Modal>
 </template>
 <script setup lang="ts">
-import { Modal, Input, Alert } from "ant-design-vue";
+import { Modal, Input, Alert, RangePicker } from "ant-design-vue";
 import { PlusOutlined } from "@ant-design/icons-vue";
 import { AAddTask, taskFeatureAddModel } from "../../../features/add-task";
 import { AButton } from "../../../shared/button";

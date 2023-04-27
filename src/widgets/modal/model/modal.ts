@@ -1,11 +1,14 @@
+import { SmileOutlined } from "@ant-design/icons-vue";
+import { notification } from "ant-design-vue";
 import { defineStore } from "pinia";
-import { reactive, ref } from "vue";
+import { h, reactive, ref } from "vue";
 
 export const useModalStore = defineStore("modal", () => {
   const newTask = reactive({
     title: "",
     description: "",
     checked: false,
+    date: undefined,
   });
   const visible = ref(false);
 
@@ -15,6 +18,12 @@ export const useModalStore = defineStore("modal", () => {
   function showModal() {
     visible.value = true;
   }
+  const openNotification = () => {
+    notification.open({
+      message: "Task created",
+      icon: () => h(SmileOutlined, { style: "color: #6abe39" }),
+    });
+  };
 
-  return { newTask, visible, closeModal, showModal };
+  return { newTask, visible, closeModal, showModal, openNotification };
 });

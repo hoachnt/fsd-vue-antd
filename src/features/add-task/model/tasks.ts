@@ -8,6 +8,9 @@ export const useFeatureAddTaskStore = defineStore("tasksAddFeature", () => {
   interface IData {
     title: string;
     description: string;
+    date?: string[];
+    date_start: string | null;
+    date_end: string | null;
   }
 
   const taskStore = taskModel();
@@ -16,6 +19,20 @@ export const useFeatureAddTaskStore = defineStore("tasksAddFeature", () => {
   const validation = ref(false);
 
   async function addTask(data: IData) {
+    const date: any = data.date;
+
+    if (data.date !== undefined) {
+      data.date_start = date[0];
+      data.date_end = date[1];
+
+      delete data.date;
+    } else {
+      data.date_start = null;
+      data.date_end = null;
+
+      delete data.date;
+    }
+
     try {
       if (data.title.length === 0) return (validation.value = true);
 
@@ -28,8 +45,14 @@ export const useFeatureAddTaskStore = defineStore("tasksAddFeature", () => {
       loading.value = false;
 
       modalStore.closeModal();
+      modalStore.openNotification();
 
-      modalStore.newTask = { title: "", description: "", checked: false };
+      modalStore.newTask = {
+        title: "",
+        description: "",
+        checked: false,
+        date: undefined,
+      };
     } catch (error: any) {
       console.log(error.message);
     }

@@ -11,7 +11,11 @@ export const useFeatureDeleteTaskStore = defineStore(
 
     async function deleteTask(id: number | undefined) {
       try {
+        taskStore.loading = true;
+
         await axios.delete(`${import.meta.env.VITE_APP_API_URL}/${id}`);
+
+        taskStore.loading = false;
 
         if (route.path === "/") {
           await taskStore.getTaskList();
