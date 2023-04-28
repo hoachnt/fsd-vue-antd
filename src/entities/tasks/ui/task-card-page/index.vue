@@ -46,5 +46,4 @@ interface ICardItem {
 }
 
 const props = defineProps<{ cardItem: ICardItem }>();
-console.log(props.cardItem);
 </script>
