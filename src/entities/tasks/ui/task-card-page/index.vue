@@ -1,9 +1,8 @@
 <template>
   <Card hoverable>
-    <template #actions>
-      <SettingOutlined />
-      <EditOutlined />
-      <EllipsisOutlined />
+    <template #actions :class="styles.actions">
+      <LeftOutlined @click="$router.push('/')" />
+      <slot name="actions" />
     </template>
     <CardMeta>
       <template #title>
@@ -30,12 +29,9 @@
 </template>
 
 <script setup lang="ts">
-import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
-} from "@ant-design/icons-vue";
+import { LeftOutlined } from "@ant-design/icons-vue";
 import { Card, CardMeta, Tag } from "ant-design-vue";
+import styles from "./styles.module.scss";
 
 interface ICardItem {
   title: string;

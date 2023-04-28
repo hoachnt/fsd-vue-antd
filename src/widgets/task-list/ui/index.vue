@@ -5,7 +5,7 @@
         <ATaskCard :item="item">
           <template #actions>
             <ACheckbox :item="item" />
-            <ADeleteTask :id="item.id" />
+            <ADeleteTask :id="item.id">Delete</ADeleteTask>
           </template>
         </ATaskCard>
       </template>

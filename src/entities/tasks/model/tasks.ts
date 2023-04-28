@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 import { reactive, ref } from "vue";
 
 interface ITaskItem {
+  id?: number;
   title: string;
   description: string;
   date_start: string;
@@ -43,11 +44,12 @@ export const useTaskStore = defineStore("tasks", () => {
       let response = await axios.get(`${url}/${id}`);
       let item = response.data.data;
 
-      taskItem.title = item.title,
-      taskItem.description = item.description,
-      taskItem.date_start = item.date_start,
-      taskItem.date_end = item.date_start,
-      taskItem.checked = item.checked,
+      taskItem.title = item.title;
+      taskItem.id = item.id;
+      taskItem.description = item.description;
+      taskItem.date_start = item.date_start;
+      taskItem.date_end = item.date_start;
+      taskItem.checked = item.checked;
 
       loading.value = false;
     } catch (error: any) {

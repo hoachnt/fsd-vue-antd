@@ -1,5 +1,7 @@
 <template>
-  <AButton danger @click="taskStore.deleteTask(props.id)">Delete</AButton>
+  <AButton danger @click="taskStore.deleteTask(props.id)">
+    <slot />
+  </AButton>
 </template>
 <script setup lang="ts">
 import { AButton } from "../../../shared/button";

@@ -1,4 +1,4 @@
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
 import { defineStore } from "pinia";
 import { taskModel } from "../../../entities/tasks";
@@ -8,6 +8,7 @@ export const useFeatureDeleteTaskStore = defineStore(
   () => {
     const taskStore = taskModel();
     const route = useRoute();
+    const router = useRouter();
 
     async function deleteTask(id: number | undefined) {
       try {
@@ -21,6 +22,8 @@ export const useFeatureDeleteTaskStore = defineStore(
           await taskStore.getTaskList();
         } else if (route.path === "/finished") {
           await taskStore.getFinishedTaskList();
+        } else if (route.path.includes("task")) {
+          await router.push("/");
         } else {
           await taskStore.getUnFinishedTaskList();
         }
