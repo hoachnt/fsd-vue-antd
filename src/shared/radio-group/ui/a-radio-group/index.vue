@@ -6,11 +6,11 @@
       button-style="solid"
     >
       <div v-if="!route.path.includes('task')">
-        <RadioButton value="2" @click="$router.push('/')">All Taks</RadioButton>
-        <RadioButton value="3" @click="$router.push('/finished')"
+        <RadioButton value="1" @click="$router.push('/')">All Taks</RadioButton>
+        <RadioButton value="2" @click="$router.push('/finished')"
           >Finished Tasks</RadioButton
         >
-        <RadioButton value="4" @click="$router.push('/unfinished')"
+        <RadioButton value="3" @click="$router.push('/unfinished')"
           >Unfinished Tasks</RadioButton
         >
       </div>

@@ -11,4 +11,9 @@ export default defineConfig({
     },
     extensions: [".ts", ".vue"],
   },
+  build: {
+    rollupOptions: {
+      external: ["@ant-design/icons-vue", "ant-design-vue"],
+    },
+  },
 });
