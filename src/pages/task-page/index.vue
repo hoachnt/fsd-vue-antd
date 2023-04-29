@@ -5,11 +5,11 @@
 </template>
 
 <script setup lang="ts">
-import { taskModel } from "@/entities/tasks";
-import { TaskCardWidget } from "@/widgets/task-card-widget";
 import { Layout } from "ant-design-vue";
 import { onMounted } from "vue";
 import { useRoute } from "vue-router";
+import { taskModel } from "../../entities/tasks";
+import { TaskCardWidget } from "../../widgets/task-card-widget";
 
 const taskStore = taskModel();
 const route = useRoute();

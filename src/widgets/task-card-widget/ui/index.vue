@@ -10,11 +10,11 @@
 </template>
 
 <script setup lang="ts">
-import { TaskCardPage, taskModel } from "@/entities/tasks";
-import { taskFeatureDeleteModel } from "@/features/delete-task";
-import { ACheckbox } from "@/features/toggle-task";
 import { DeleteFilled } from "@ant-design/icons-vue";
 import { Spin } from "ant-design-vue";
+import { TaskCardPage, taskModel } from "../../../entities/tasks";
+import { taskFeatureDeleteModel } from "../../../features/delete-task";
+import { ACheckbox } from "../../../features/toggle-task";
 
 const taskStore = taskModel();
 const taskDelete = taskFeatureDeleteModel();
