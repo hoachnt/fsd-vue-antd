@@ -8,7 +8,7 @@
     <plus-outlined />
   </AButton>
   <Modal
-    v-model:visible="modalStore.visible"
+    v-model:open="modalStore.visible"
     title="Create a task"
     :after-close="() => (addTaskStore.validation = false)"
   >
