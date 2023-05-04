@@ -11,6 +11,7 @@ export const useFeatureAddTaskStore = defineStore("tasksAddFeature", () => {
     date?: string[];
     date_start: string | null;
     date_end: string | null;
+    date_time?: string | null;
   }
 
   const taskStore = taskModel();
@@ -54,6 +55,7 @@ export const useFeatureAddTaskStore = defineStore("tasksAddFeature", () => {
         date: undefined,
         date_start: "",
         date_end: "",
+        date_time: undefined,
       };
     } catch (error: any) {
       console.log(error.message);

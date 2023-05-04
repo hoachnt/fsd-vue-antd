@@ -21,6 +21,11 @@
             {{ new Date(props.item.date_end).toLocaleString("en") }}
           </Tag>
         </div>
+        <div v-if="props.item.date_time !== null">
+          <Tag color="blue">
+            {{ new Date(props.item.date_time).toLocaleString("en") }}
+          </Tag>
+        </div>
       </template>
     </ListItemMeta>
   </ListItem>
@@ -35,6 +40,7 @@ interface IItem {
   checked: boolean;
   date_start: string;
   date_end: string;
+  date_time: string;
 }
 
 const props = defineProps<{ item: IItem }>();

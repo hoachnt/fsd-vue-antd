@@ -4,8 +4,9 @@
     size="large"
     type="primary"
     :class="taskListPageStyles.add_task_modal"
-    ><plus-outlined
-  /></AButton>
+  >
+    <plus-outlined />
+  </AButton>
   <Modal
     v-model:visible="modalStore.visible"
     title="Create a task"
@@ -29,7 +30,21 @@
       v-model:value="modalStore.newTask.description"
       placeholder="Description"
     />
+    <DatePicker
+      v-if="
+        modalStore.newTask.date === undefined ||
+        modalStore.newTask.date === null
+      "
+      v-model:value="modalStore.newTask.date_time"
+      show-time
+      :class="styles.input"
+      size="large"
+    />
     <RangePicker
+      v-if="
+        modalStore.newTask.date_time === undefined ||
+        modalStore.newTask.date_time === null
+      "
       v-model:value="modalStore.newTask.date"
       show-time
       :class="styles.input"
@@ -45,7 +60,7 @@
   </Modal>
 </template>
 <script setup lang="ts">
-import { Modal, Input, Alert, RangePicker } from "ant-design-vue";
+import { Modal, Input, Alert, RangePicker, DatePicker } from "ant-design-vue";
 import { PlusOutlined } from "@ant-design/icons-vue";
 import { AAddTask, taskFeatureAddModel } from "../../../features/add-task";
 import { AButton } from "../../../shared/button";
