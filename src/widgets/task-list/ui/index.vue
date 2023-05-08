@@ -2,7 +2,7 @@
   <Spin :spinning="taskStore.loading" tip="Loading...">
     <List bordered :data-source="props.listItems">
       <template #renderItem="{ item }">
-        <Popover placement="bottom">
+        <Popover placement="left">
           <template #content>
             <p>Double click to open a task</p>
           </template>
