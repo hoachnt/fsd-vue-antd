@@ -1,11 +1,11 @@
 <template>
-  <ListItem>
+  <ListItem @dblclick="$router.push(`/task/${props.item.id}`)" :class="styles.list_item">
     <template #actions>
       <slot name="actions" />
     </template>
     <ListItemMeta>
       <template #title>
-        <a @click="$router.push(`/task/${props.item.id}`)">{{
+        <a>{{
           props.item.title
         }}</a>
       </template>
@@ -32,6 +32,7 @@
 </template>
 <script setup lang="ts">
 import { ListItemMeta, ListItem, Tag } from "ant-design-vue";
+import styles from "./styles.module.scss"
 
 interface IItem {
   id: number;

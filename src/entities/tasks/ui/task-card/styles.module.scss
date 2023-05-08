@@ -1,0 +1,9 @@
+.list_item,
+.list_item:hover {
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+.list_item:hover {
+  margin: 10px 0;
+  box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.16);
+}
