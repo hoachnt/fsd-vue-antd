@@ -1,24 +1,22 @@
 <template>
   <Spin :spinning="taskStore.loading" tip="Loading...">
     <List bordered :data-source="props.listItems">
+      <template #header>
+        <Alert type="info" message="Double click to open a task" />
+      </template>
       <template #renderItem="{ item }">
-        <Popover placement="left">
-          <template #content>
-            <p>Double click to open a task</p>
+        <ATaskCard :item="item">
+          <template #actions>
+            <ACheckbox :item="item" />
+            <ADeleteTask :id="item.id">Delete</ADeleteTask>
           </template>
-          <ATaskCard :item="item">
-            <template #actions>
-              <ACheckbox :item="item" />
-              <ADeleteTask :id="item.id">Delete</ADeleteTask>
-            </template>
-          </ATaskCard>
-        </Popover>
+        </ATaskCard>
       </template>
     </List>
   </Spin>
 </template>
 <script setup lang="ts">
-import { List, Popover, Spin } from "ant-design-vue";
+import { Alert, List, Spin } from "ant-design-vue";
 import { ATaskCard, taskModel } from "../../../entities/tasks";
 import { ADeleteTask } from "../../../features/delete-task";
 import { ACheckbox } from "../../../features/toggle-task";
