@@ -26,6 +26,7 @@ interface ICardItem {
   checked: boolean;
   date_start: string;
   date_end: string;
+  date_time: string;
 }
 
 const props = defineProps<{ cardItem: ICardItem }>();

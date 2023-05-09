@@ -1,13 +1,14 @@
 <template>
-  <ListItem @dblclick="$router.push(`/task/${props.item.id}`)" :class="styles.list_item">
+  <ListItem
+    @dblclick="$router.push(`/task/${props.item.id}`)"
+    :class="styles.list_item"
+  >
     <template #actions>
       <slot name="actions" />
     </template>
     <ListItemMeta>
       <template #title>
-        <a>{{
-          props.item.title
-        }}</a>
+        <a>{{ props.item.title }}</a>
       </template>
       <template #description>
         <p>{{ props.item.description }}</p>
@@ -15,15 +16,15 @@
           v-if="props.item.date_start !== null && props.item.date_end !== null"
         >
           <Tag color="blue">
-            {{ new Date(props.item.date_start).toLocaleString("en") }}
+            {{ itemStartDate }}
           </Tag>
           <Tag color="blue">
-            {{ new Date(props.item.date_end).toLocaleString("en") }}
+            {{ itemEndDate }}
           </Tag>
         </div>
         <div v-if="props.item.date_time !== null">
           <Tag color="blue">
-            {{ new Date(props.item.date_time).toLocaleString("en") }}
+            {{ itemDate }}
           </Tag>
         </div>
       </template>
@@ -32,7 +33,7 @@
 </template>
 <script setup lang="ts">
 import { ListItemMeta, ListItem, Tag } from "ant-design-vue";
-import styles from "./styles.module.scss"
+import styles from "./styles.module.scss";
 
 interface IItem {
   id: number;
@@ -45,4 +46,12 @@ interface IItem {
 }
 
 const props = defineProps<{ item: IItem }>();
+const userOffset = new Date().getTimezoneOffset() * 60000; // в миллисекундах
+let itemDate: Date | string = new Date(props.item.date_time);
+let itemStartDate: Date | string = new Date(props.item.date_start);
+let itemEndDate: Date | string = new Date(props.item.date_end);
+
+itemDate = new Date(itemDate.getTime() - userOffset).toLocaleString();
+itemStartDate = new Date(itemStartDate.getTime() - userOffset).toLocaleString();
+itemEndDate = new Date(itemEndDate.getTime() - userOffset).toLocaleString();
 </script>

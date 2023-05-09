@@ -8,6 +8,7 @@ interface ITaskItem {
   description: string;
   date_start: string;
   date_end: string;
+  date_time: string;
   checked: boolean;
 }
 
@@ -21,6 +22,7 @@ export const useTaskStore = defineStore("tasks", () => {
     date_start: "",
     date_end: "",
     checked: false,
+    date_time: "",
   });
   const loading = ref(false);
   const url = `${import.meta.env.VITE_APP_API_URL}`;
@@ -50,6 +52,7 @@ export const useTaskStore = defineStore("tasks", () => {
       taskItem.date_start = item.date_start;
       taskItem.date_end = item.date_start;
       taskItem.checked = item.checked;
+      taskItem.date_time = item.date_time;
 
       loading.value = false;
     } catch (error: any) {
@@ -96,6 +99,9 @@ export const useTaskStore = defineStore("tasks", () => {
       console.log(error.message);
     }
   }
+  function pushNotification() {
+    Notification.requestPermission();
+  }
 
   return {
     listItems,
@@ -105,6 +111,7 @@ export const useTaskStore = defineStore("tasks", () => {
     getFinishedTaskList,
     getUnFinishedTaskList,
     getTaskById,
+    pushNotification,
     loading,
     listItemsFinished,
   };
