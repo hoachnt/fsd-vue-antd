@@ -15,7 +15,6 @@ import styles from "./styles.module.scss";
 const taskStore = taskModel();
 
 onMounted(() => {
-  taskStore.pushNotification();
   taskStore.getTaskList();
 });
 </script>

@@ -37,6 +37,7 @@
 import { LeftOutlined } from "@ant-design/icons-vue";
 import { Card, CardMeta, Tag } from "ant-design-vue";
 import styles from "./styles.module.scss";
+import { ref, watch } from "vue";
 
 interface ICardItem {
   title: string;
@@ -49,11 +50,24 @@ interface ICardItem {
 
 const props = defineProps<{ cardItem: ICardItem }>();
 const userOffset = new Date().getTimezoneOffset() * 60000; // в миллисекундах
-let itemDate: Date | string = new Date(props.cardItem.date_time);
-let itemStartDate: Date | string = new Date(props.cardItem.date_start);
-let itemEndDate: Date | string = new Date(props.cardItem.date_end);
 
-itemDate = new Date(itemDate.getTime() - userOffset).toLocaleString();
-itemStartDate = new Date(itemStartDate.getTime() - userOffset).toLocaleString();
-itemEndDate = new Date(itemEndDate.getTime() - userOffset).toLocaleString();
+const itemDate = ref<Date | string>("");
+const itemStartDate = ref<Date | string>("");
+const itemEndDate = ref<Date | string>("");
+
+watch(props.cardItem, (cardItem) => {
+  itemDate.value = new Date(Date.parse(cardItem.date_time));
+  itemStartDate.value = new Date(Date.parse(cardItem.date_start));
+  itemEndDate.value = new Date(Date.parse(cardItem.date_end));
+
+  itemDate.value = new Date(
+    (itemDate.value as Date).getTime() - userOffset
+  ).toLocaleString();
+  itemStartDate.value = new Date(
+    (itemStartDate.value as Date).getTime() - userOffset
+  ).toLocaleString();
+  itemEndDate.value = new Date(
+    (itemEndDate.value as Date).getTime() - userOffset
+  ).toLocaleString();
+});
 </script>

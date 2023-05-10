@@ -1,6 +1,6 @@
 import axios from "axios";
 import { defineStore } from "pinia";
-import { reactive, ref } from "vue";
+import { nextTick, reactive, ref } from "vue";
 
 interface ITaskItem {
   id?: number;
@@ -50,9 +50,11 @@ export const useTaskStore = defineStore("tasks", () => {
       taskItem.id = item.id;
       taskItem.description = item.description;
       taskItem.date_start = item.date_start;
-      taskItem.date_end = item.date_start;
+      taskItem.date_end = item.date_end;
       taskItem.checked = item.checked;
       taskItem.date_time = item.date_time;
+
+      await nextTick();
 
       loading.value = false;
     } catch (error: any) {
@@ -99,9 +101,6 @@ export const useTaskStore = defineStore("tasks", () => {
       console.log(error.message);
     }
   }
-  function pushNotification() {
-    Notification.requestPermission();
-  }
 
   return {
     listItems,
@@ -111,7 +110,6 @@ export const useTaskStore = defineStore("tasks", () => {
     getFinishedTaskList,
     getUnFinishedTaskList,
     getTaskById,
-    pushNotification,
     loading,
     listItemsFinished,
   };
