@@ -55,19 +55,33 @@ const itemDate = ref<Date | string>("");
 const itemStartDate = ref<Date | string>("");
 const itemEndDate = ref<Date | string>("");
 
-watch(props.cardItem, (cardItem) => {
-  itemDate.value = new Date(Date.parse(cardItem.date_time));
-  itemStartDate.value = new Date(Date.parse(cardItem.date_start));
-  itemEndDate.value = new Date(Date.parse(cardItem.date_end));
+changeCardItem(
+  (itemDate.value = new Date(props.cardItem.date_time)),
+  (itemStartDate.value = new Date(props.cardItem.date_start)),
+  (itemEndDate.value = new Date(props.cardItem.date_end))
+);
 
+watch(props.cardItem, (cardItem) => {
+  changeCardItem(
+    (itemDate.value = new Date(cardItem.date_time)),
+    (itemStartDate.value = new Date(cardItem.date_start)),
+    (itemEndDate.value = new Date(cardItem.date_end))
+  );
+});
+
+function changeCardItem(
+  itemDateArgument: Date | string,
+  itemStartDateArgument: Date | string,
+  itemEndDateArgument: Date | string
+): void {
   itemDate.value = new Date(
-    (itemDate.value as Date).getTime() - userOffset
+    (itemDateArgument as Date).getTime() - userOffset
   ).toLocaleString();
   itemStartDate.value = new Date(
-    (itemStartDate.value as Date).getTime() - userOffset
+    (itemStartDateArgument as Date).getTime() - userOffset
   ).toLocaleString();
   itemEndDate.value = new Date(
-    (itemEndDate.value as Date).getTime() - userOffset
+    (itemEndDateArgument as Date).getTime() - userOffset
   ).toLocaleString();
-});
+}
 </script>
