@@ -2,6 +2,7 @@ import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
 import { defineStore } from "pinia";
 import { taskModel } from "../../../entities/tasks";
+import { deleteSound } from "../api";
 
 export const useFeatureDeleteTaskStore = defineStore(
   "tasksDeleteFeature",
@@ -27,9 +28,16 @@ export const useFeatureDeleteTaskStore = defineStore(
         } else {
           await taskStore.getUnFinishedTaskList();
         }
+
+        playDeleteSound(deleteSound);
       } catch (error: any) {
         console.log(error.message);
       }
+    }
+    function playDeleteSound(sound: string): void {
+      const audio: HTMLAudioElement = new Audio(sound);
+
+      audio.play();
     }
 
     return { deleteTask };
