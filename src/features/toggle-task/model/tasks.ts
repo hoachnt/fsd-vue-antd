@@ -35,13 +35,9 @@ export const useFeatureCheckedTaskStore = defineStore(
         }
 
         playCheckedSound(checkedSound);
-        vibration(1000);
       } catch (error: any) {
         console.log(error.message);
       }
-    }
-    function vibration(pattern: number): void {
-      navigator.vibrate(pattern);
     }
     function playCheckedSound(sound: string): void {
       const audioPlay: HTMLAudioElement = new Audio(sound);
