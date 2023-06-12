@@ -2,6 +2,7 @@ import axios from "axios";
 import { defineStore } from "pinia";
 import { useRoute } from "vue-router";
 import { taskModel } from "../../../entities/tasks";
+import { checkedSound } from "../api";
 
 export const useFeatureCheckedTaskStore = defineStore(
   "tasksCheckedFeature",
@@ -32,9 +33,16 @@ export const useFeatureCheckedTaskStore = defineStore(
         } else {
           await taskStore.getUnFinishedTaskList();
         }
+
+        playCheckedSound(checkedSound);
       } catch (error: any) {
         console.log(error.message);
       }
+    }
+    function playCheckedSound(sound: string): void {
+      const audioPlay: HTMLAudioElement = new Audio(sound);
+
+      audioPlay.play();
     }
 
     return { checkedTask };
