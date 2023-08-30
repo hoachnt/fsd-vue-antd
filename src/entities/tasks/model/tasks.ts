@@ -25,7 +25,8 @@ export const useTaskStore = defineStore("tasks", () => {
     date_time: "",
   });
   const loading = ref(false);
-  const url = `${import.meta.env.VITE_APP_API_URL}`;
+  const url = import.meta.env.VITE_APP_API_URL
+  console.log(url)
 
   async function getTaskList() {
     try {
