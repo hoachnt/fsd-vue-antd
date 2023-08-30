@@ -2,7 +2,7 @@ import axios from "axios";
 import { defineStore } from "pinia";
 import { useRoute } from "vue-router";
 import { taskModel } from "../../../entities/tasks";
-import { checkedSound } from "../api";
+// import { checkedSound } from "../api";
 
 export const useFeatureCheckedTaskStore = defineStore(
   "tasksCheckedFeature",

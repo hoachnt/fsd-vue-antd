@@ -2,7 +2,7 @@ import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
 import { defineStore } from "pinia";
 import { taskModel } from "../../../entities/tasks";
-import { deleteSound } from "../api";
+// import { deleteSound } from "../api";
 
 export const useFeatureDeleteTaskStore = defineStore(
   "tasksDeleteFeature",
