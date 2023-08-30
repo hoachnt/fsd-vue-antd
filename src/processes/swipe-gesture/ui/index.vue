@@ -26,9 +26,9 @@ const router = useRouter();
 const activeValue = ref<number>(0);
 const activePath = ref<string>("");
 
-function vibration(pattern: number): void {
-  navigator.vibrate(pattern);
-}
+// function vibration(pattern: number): void {
+//   navigator.vibrate(pattern);
+// }
 
 watch([direction, isSwiping], ([direction, isSwiping]) => {
   if (
@@ -40,7 +40,7 @@ watch([direction, isSwiping], ([direction, isSwiping]) => {
     activeValue.value = Number(radioStore.activeValue);
     activePath.value = pages[activeValue.value];
 
-    vibration(200)
+    // vibration(200)
     router.push(activePath.value);
   } else if (
     direction === "left" &&
@@ -51,7 +51,7 @@ watch([direction, isSwiping], ([direction, isSwiping]) => {
     activeValue.value = Number(radioStore.activeValue);
     activePath.value = pages[activeValue.value];
 
-    vibration(200)
+    // vibration(200)
     router.push(activePath.value);
   }
 });

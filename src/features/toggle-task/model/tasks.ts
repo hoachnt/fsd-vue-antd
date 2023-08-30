@@ -34,16 +34,16 @@ export const useFeatureCheckedTaskStore = defineStore(
           await taskStore.getUnFinishedTaskList();
         }
 
-        playCheckedSound(checkedSound);
+        // playCheckedSound(checkedSound);
       } catch (error: any) {
         console.log(error.message);
       }
     }
-    function playCheckedSound(sound: string): void {
-      const audioPlay: HTMLAudioElement = new Audio(sound);
+    // function playCheckedSound(sound: string): void {
+    //   const audioPlay: HTMLAudioElement = new Audio(sound);
 
-      audioPlay.play();
-    }
+    //   audioPlay.play();
+    // }
 
     return { checkedTask };
   }

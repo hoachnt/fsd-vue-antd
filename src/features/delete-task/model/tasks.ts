@@ -29,16 +29,16 @@ export const useFeatureDeleteTaskStore = defineStore(
           await taskStore.getUnFinishedTaskList();
         }
 
-        playDeleteSound(deleteSound);
+        // playDeleteSound(deleteSound);
       } catch (error: any) {
         console.log(error.message);
       }
     }
-    function playDeleteSound(sound: string): void {
-      const audio: HTMLAudioElement = new Audio(sound);
+    // function playDeleteSound(sound: string): void {
+    //   const audio: HTMLAudioElement = new Audio(sound);
 
-      audio.play();
-    }
+    //   audio.play();
+    // }
 
     return { deleteTask };
   }
