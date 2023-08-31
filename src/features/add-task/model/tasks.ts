@@ -3,23 +3,15 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 import { taskModel } from "../../../entities/tasks";
 import { modalModel } from "../../../widgets/modal";
+import { Task } from "../../../shared/api";
 
 export const useFeatureAddTaskStore = defineStore("tasksAddFeature", () => {
-  interface IData {
-    title: string;
-    description: string;
-    date?: string[];
-    date_start: string | null;
-    date_end: string | null;
-    date_time?: string | null;
-  }
-
   const taskStore = taskModel();
   const modalStore = modalModel();
   const loading = ref(false);
   const validation = ref(false);
 
-  async function addTask(data: IData) {
+  async function addTask(data: Task) {
     const date: any = data.date;
 
     if (data.date !== undefined) {
