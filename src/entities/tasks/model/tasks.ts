@@ -1,22 +1,13 @@
 import axios from "axios";
 import { defineStore } from "pinia";
 import { nextTick, reactive, ref } from "vue";
-
-interface ITaskItem {
-  id?: number;
-  title: string;
-  description: string;
-  date_start: string;
-  date_end: string;
-  date_time: string;
-  checked: boolean;
-}
+import { API_URL, Task } from "../../../shared/api";
 
 export const useTaskStore = defineStore("tasks", () => {
   const listItems = ref<object[]>([]);
   const listItemsFinished = ref<object[]>([]);
   const listItemsUnFinished = ref<object[]>([]);
-  let taskItem = reactive<ITaskItem>({
+  let taskItem = reactive<Task>({
     title: "",
     description: "",
     date_start: "",
@@ -25,7 +16,7 @@ export const useTaskStore = defineStore("tasks", () => {
     date_time: "",
   });
   const loading = ref(false);
-  const url = import.meta.env.VITE_APP_API_URL
+  const url = API_URL
   console.log(url)
 
   async function getTaskList() {

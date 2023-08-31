@@ -2,6 +2,7 @@ import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
 import { defineStore } from "pinia";
 import { taskModel } from "../../../entities/tasks";
+import { API_URL } from "../../../shared/api";
 // import { deleteSound } from "../api";
 
 export const useFeatureDeleteTaskStore = defineStore(
@@ -10,12 +11,13 @@ export const useFeatureDeleteTaskStore = defineStore(
     const taskStore = taskModel();
     const route = useRoute();
     const router = useRouter();
+    const url = API_URL
 
     async function deleteTask(id: number | undefined) {
       try {
         taskStore.loading = true;
 
-        await axios.delete(`${import.meta.env.VITE_APP_API_URL}/${id}`);
+        await axios.delete(`${url}/${id}`);
 
         taskStore.loading = false;
 

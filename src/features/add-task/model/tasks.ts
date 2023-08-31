@@ -3,13 +3,14 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 import { taskModel } from "../../../entities/tasks";
 import { modalModel } from "../../../widgets/modal";
-import { Task } from "../../../shared/api";
+import { API_URL, Task } from "../../../shared/api";
 
 export const useFeatureAddTaskStore = defineStore("tasksAddFeature", () => {
   const taskStore = taskModel();
   const modalStore = modalModel();
   const loading = ref(false);
   const validation = ref(false);
+  const url = API_URL
 
   async function addTask(data: Task) {
     const date: any = data.date;
@@ -32,7 +33,7 @@ export const useFeatureAddTaskStore = defineStore("tasksAddFeature", () => {
       validation.value = false;
       loading.value = true;
 
-      await axios.post(`${import.meta.env.VITE_APP_API_URL}`, data);
+      await axios.post(`${url}`, data);
       await taskStore.getTaskList();
 
       loading.value = false;

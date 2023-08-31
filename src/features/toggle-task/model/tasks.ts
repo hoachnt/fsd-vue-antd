@@ -2,6 +2,7 @@ import axios from "axios";
 import { defineStore } from "pinia";
 import { useRoute } from "vue-router";
 import { taskModel } from "../../../entities/tasks";
+import { API_URL } from "../../../shared/api";
 // import { checkedSound } from "../api";
 
 export const useFeatureCheckedTaskStore = defineStore(
@@ -9,6 +10,7 @@ export const useFeatureCheckedTaskStore = defineStore(
   () => {
     const taskStore = taskModel();
     const route = useRoute();
+    const url = API_URL
 
     async function checkedTask(checkedTask: any) {
       try {
@@ -16,7 +18,7 @@ export const useFeatureCheckedTaskStore = defineStore(
 
         await axios({
           method: "patch",
-          url: `${import.meta.env.VITE_APP_API_URL}/${checkedTask.id}`,
+          url: `${url}/${checkedTask.id}`,
           data: {
             checked: !checkedTask.checked,
           },
