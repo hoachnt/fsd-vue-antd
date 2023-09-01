@@ -17,7 +17,6 @@ export const useTaskStore = defineStore("tasks", () => {
   });
   const loading = ref(false);
   const url = API_URL
-  console.log(url)
 
   async function getTaskList() {
     try {
