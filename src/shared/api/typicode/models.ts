@@ -9,3 +9,6 @@ export type Task = {
     checked: boolean;
 
 }
+export type Pages = {
+    [key: number]: string;
+}
