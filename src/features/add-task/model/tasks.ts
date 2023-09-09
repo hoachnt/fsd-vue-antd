@@ -2,7 +2,7 @@ import axios from "axios";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import { taskModel } from "../../../entities/tasks";
-import { modalModel } from "../../../widgets/modal";
+import { modalModel } from "../../../widgets/new-task-modal";
 import { API_URL, Task } from "../../../shared/api";
 
 export const useFeatureAddTaskStore = defineStore("tasksAddFeature", () => {

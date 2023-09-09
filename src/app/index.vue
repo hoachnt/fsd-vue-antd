@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Routing } from "../pages";
 import { SwipeProcess } from "../processes";
-import { ARadioGroup } from "../shared/radio-group";
+import { ARadioGroup } from "../shared/ui/radio-group";
 </script>
 
 <template>

@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import { useSwipe } from "@vueuse/core";
 import { reactive, ref, watch } from "vue";
-import { useRadio } from "../../../shared/radio-group";
+import { useRadio } from "../../../shared/ui/radio-group";
 import { useRouter } from "vue-router";
 import styles from "./style.module.scss";
 import { Pages } from "../../../shared/api";
