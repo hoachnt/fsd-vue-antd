@@ -1,3 +1,3 @@
-import TaskCardPage from "./index.vue";
+import TaskCardDetails from "./index.vue";
 
-export { TaskCardPage };
+export { TaskCardDetails };
