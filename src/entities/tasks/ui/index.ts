@@ -1,2 +1,2 @@
 export * from "./task-card";
-export * from "./task-card-page";
+export * from "./task-card-details";

@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { Routing } from "../pages";
-import { SwipeProcess } from "../processes";
 import { ARadioGroup } from "../shared/ui/radio-group";
+import { SwipeGesture } from "../shared/ui/swipe-gesture";
 </script>
 
 <template>
   <div class="app">
-    <SwipeProcess>
+    <SwipeGesture>
       <ARadioGroup />
       <Routing />
-    </SwipeProcess>
+    </SwipeGesture>
   </div>
 </template>
 
