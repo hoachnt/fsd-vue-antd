@@ -1,4 +1,4 @@
-export type Task = {
+export interface Task {
     id?: number
     title: string;
     description: string;
@@ -8,7 +8,7 @@ export type Task = {
     date_time?: string | null;
     checked: boolean;
 }
-export type TaskCardItem = Task & {
+export interface TaskCardItem extends Task {
     // Переопределите только те поля, которые вам нужно изменить
     date_start: string;
     date_end: string;

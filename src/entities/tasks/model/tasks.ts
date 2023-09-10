@@ -1,13 +1,13 @@
 import axios from "axios";
 import { defineStore } from "pinia";
 import { nextTick, reactive, ref } from "vue";
-import { API_URL, Task } from "../../../shared/api";
+import { API_URL, Task, TaskCardItem } from "../../../shared/api";
 
 export const useTaskStore = defineStore("tasks", () => {
-  const listItems = ref<object[]>([]);
-  const listItemsFinished = ref<object[]>([]);
-  const listItemsUnFinished = ref<object[]>([]);
-  let taskItem = reactive<Task>({
+  const listItems = ref<Task[]>([]);
+  const listItemsFinished = ref<Task[]>([]);
+  const listItemsUnFinished = ref<Task[]>([]);
+  let taskItem = reactive<TaskCardItem>({
     title: "",
     description: "",
     date_start: "",
