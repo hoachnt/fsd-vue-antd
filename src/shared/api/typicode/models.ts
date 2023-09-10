@@ -17,3 +17,6 @@ export interface TaskCardItem extends Task {
 export type Pages = {
     [key: number]: string;
 }
+export interface RouteTransition {
+    transition: string
+}
