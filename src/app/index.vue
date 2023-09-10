@@ -5,12 +5,12 @@ import { SwipeGesture } from "../shared/ui/swipe-gesture";
 </script>
 
 <template>
-  <div class="app">
-    <SwipeGesture>
-      <ARadioGroup />
-      <Routing />
-    </SwipeGesture>
-  </div>
+    <div class="app">
+        <SwipeGesture>
+            <ARadioGroup />
+            <Routing />
+        </SwipeGesture>
+    </div>
 </template>
 
 <style>

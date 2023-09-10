@@ -1,8 +1,8 @@
 <template>
-  <Layout :class="styles.root">
-    <ATaskList :listItems="taskStore.listItems" />
-    <AModal />
-  </Layout>
+    <Layout :class="styles.root">
+        <ATaskList :listItems="taskStore.listItems" />
+        <AModal />
+    </Layout>
 </template>
 <script setup lang="ts">
 import { Layout } from "ant-design-vue";
@@ -14,7 +14,7 @@ import styles from "./styles.module.scss";
 
 const taskStore = taskModel();
 
-onMounted(() => {
-  taskStore.getTaskList();
+onMounted(async () => {
+    await taskStore.getTaskList();
 });
 </script>

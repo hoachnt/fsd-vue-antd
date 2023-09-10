@@ -72,4 +72,3 @@ import styles from "./styles.module.scss";
 const addTaskStore = taskFeatureAddModel();
 const modalStore = modalModel();
 </script>
-../../../shared/ui/button
