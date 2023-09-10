@@ -1,6 +1,8 @@
 <template>
-    <ListItem @dblclick="$router.push(`/task/${props.item.id}`)"
-        :class="[styles.list_item, { [styles.completed]: item.checked }]">
+    <ListItem
+        @click="$router.push(`/task/${props.item.id}`)"
+        :class="[styles.list_item, { [styles.completed]: item.checked }]"
+    >
         <template #actions>
             <slot name="actions" />
         </template>

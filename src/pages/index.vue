@@ -4,9 +4,9 @@ import { RouterView } from "vue-router";
 </script>
 
 <template>
-    <RouterView v-slot="{ Component }">
+    <RouterView v-slot="{ Component, route }">
         <template v-if="Component">
-            <Transition name="fade">
+            <Transition :name="route.meta.transition || 'fade'">
                 <Suspense>
                     <!-- main content -->
                     <component :is="Component" />
@@ -18,20 +18,4 @@ import { RouterView } from "vue-router";
         </template>
     </RouterView>
 </template>
-<style>
-.fade-leave-active {
-    transition: var(--page-transition-time) ease;
-}
-.fade-enter-active {
-    transition: var(--page-transition-time) ease;
-    transition-delay: var(--page-transition-time);
-}
-.fade-enter-from {
-    opacity: 0;
-    transform: translateX(100px);
-}
-.fade-leave-to {
-    opacity: 0;
-    transform: translateX(-100px);
-}
-</style>
+<style></style>
