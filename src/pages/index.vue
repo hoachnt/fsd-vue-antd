@@ -7,15 +7,13 @@ import { RouterView } from "vue-router";
     <RouterView v-slot="{ Component }">
         <template v-if="Component">
             <Transition name="fade">
-                <KeepAlive>
-                    <Suspense>
-                        <!-- main content -->
-                        <component :is="Component" />
+                <Suspense>
+                    <!-- main content -->
+                    <component :is="Component" />
 
-                        <!-- loading state -->
-                        <template #fallback> <Spin /> </template>
-                    </Suspense>
-                </KeepAlive>
+                    <!-- loading state -->
+                    <template #fallback> <Spin /> </template>
+                </Suspense>
             </Transition>
         </template>
     </RouterView>

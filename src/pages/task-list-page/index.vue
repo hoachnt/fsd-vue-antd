@@ -14,7 +14,7 @@ import styles from "./styles.module.scss";
 
 const taskStore = taskModel();
 
-onMounted(async () => {
-    await taskStore.getTaskList();
+onMounted(() => {
+    taskStore.getTaskList();
 });
 </script>

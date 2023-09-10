@@ -1,10 +1,12 @@
 <template>
     <Layout>
         <Spin tip="Loading..." :spinning="taskStore.loading">
-            <TaskCardDetails :cardItem="taskItem">
+            <TaskCardDetails :cardItem="taskStore.taskItem">
                 <template #actions>
-                    <ACheckbox :item="taskItem" />
-                    <DeleteFilled @click="taskDelete.deleteTask(taskItem.id)" />
+                    <ACheckbox :item="taskStore.taskItem" />
+                    <DeleteFilled
+                        @click="taskDelete.deleteTask(taskStore.taskItem.id)"
+                    />
                 </template>
             </TaskCardDetails>
         </Spin>
@@ -13,7 +15,7 @@
 
 <script setup lang="ts">
 import { Layout } from "ant-design-vue";
-import { computed, onMounted } from "vue";
+import { onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { taskModel, TaskCardDetails } from "../../entities/tasks";
 import { DeleteFilled } from "@ant-design/icons-vue";
@@ -22,12 +24,10 @@ import { taskFeatureDeleteModel } from "../../features/delete-task";
 import { ACheckbox } from "../../features/toggle-task";
 
 const taskStore = taskModel();
-const taskItem = computed(() => taskStore.taskItem);
 const taskDelete = taskFeatureDeleteModel();
 const route = useRoute();
 const id = route.params.id;
-
-onMounted(() => {
-    taskStore.getTaskById(id);
+onMounted(async () => {
+    await taskStore.getTaskById(id);
 });
 </script>
