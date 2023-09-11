@@ -72,7 +72,6 @@ import { AButton } from "../../../shared/ui/button";
 import { modalModel } from "../../new-task-modal";
 import styles from "./styles.module.scss";
 import { defineAsyncComponent } from "vue";
-// import { IMPORTS } from "../../../shared/api/config";
 
 const LazyLoadModal = defineAsyncComponent(
     () => import("../../../shared/ui/lazy-load-modal/ui/index.vue")
