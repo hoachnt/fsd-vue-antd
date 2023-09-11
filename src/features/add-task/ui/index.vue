@@ -9,4 +9,3 @@ import { taskFeatureAddModel } from "../model";
 
 const taskAddStore = taskFeatureAddModel();
 </script>
-../../../shared/ui/button

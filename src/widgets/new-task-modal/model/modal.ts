@@ -20,6 +20,7 @@ export const useModalStore = defineStore("modal", () => {
   }
   function showModal() {
     visible.value = true;
+
   }
   const openNotification = () => {
     notification.open({

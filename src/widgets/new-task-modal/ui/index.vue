@@ -7,17 +7,19 @@
     >
         <plus-outlined />
     </AButton>
-    <Modal
-        v-model:open="modalStore.visible"
-        title="Create a task"
-        :after-close="() => (addTaskStore.validation = false)"
+    <LazyLoadModal
+        v-if="modalStore.visible"
+        v-model:visible="modalStore.visible"
+        :title="'Create a task'"
+        :func-validation="() => (addTaskStore.validation = false)"
+        :func-close="modalStore.closeModal"
     >
         <template #footer>
             <a-button key="back" @click="modalStore.closeModal"
                 >Cancel</a-button
             >
-            <AAddTask @click="addTaskStore.addTask(modalStore.newTask)"
-                >Create</AAddTask
+            <AddTask @click="addTaskStore.addTask(modalStore.newTask)"
+                >Create</AddTask
             >
         </template>
         <Input
@@ -59,16 +61,22 @@
             show-icon
             :class="styles.error_alert"
         />
-    </Modal>
+    </LazyLoadModal>
 </template>
+m
 <script setup lang="ts">
-import { Modal, Input, Alert, RangePicker, DatePicker } from "ant-design-vue";
+import { Input, Alert, RangePicker, DatePicker } from "ant-design-vue";
 import { PlusOutlined } from "@ant-design/icons-vue";
-import { AAddTask, taskFeatureAddModel } from "../../../features/add-task";
+import { AddTask, taskFeatureAddModel } from "../../../features/add-task";
 import { AButton } from "../../../shared/ui/button";
 import { modalModel } from "../../new-task-modal";
 import styles from "./styles.module.scss";
+import { defineAsyncComponent } from "vue";
+import { IMPORTS } from "../../../shared/api/config";
 
+const LazyLoadModal = defineAsyncComponent(
+    () => import(/* @vite-ignore */ IMPORTS.ImportsLazyLoadModal)
+);
 const addTaskStore = taskFeatureAddModel();
 const modalStore = modalModel();
 </script>
