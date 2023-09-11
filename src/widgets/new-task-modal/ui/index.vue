@@ -7,7 +7,7 @@
     >
         <plus-outlined />
     </AButton>
-    <LazyLoadModal
+    <LazyModal
         v-if="modalStore.visible"
         v-model:visible="modalStore.visible"
         :title="'Create a task'"
@@ -61,7 +61,7 @@
             show-icon
             :class="styles.error_alert"
         />
-    </LazyLoadModal>
+    </LazyModal>
 </template>
 m
 <script setup lang="ts">
@@ -71,11 +71,7 @@ import { AddTask, taskFeatureAddModel } from "../../../features/add-task";
 import { AButton } from "../../../shared/ui/button";
 import { modalModel } from "../../new-task-modal";
 import styles from "./styles.module.scss";
-import { defineAsyncComponent } from "vue";
 
-const LazyLoadModal = defineAsyncComponent(
-    () => import("../../../shared/ui/lazy-load-modal/ui/index.vue")
-);
 const addTaskStore = taskFeatureAddModel();
 const modalStore = modalModel();
 </script>
