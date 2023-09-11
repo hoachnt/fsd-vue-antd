@@ -16,16 +16,7 @@
 <script setup lang="ts">
 import { ListItemMeta, ListItem } from "ant-design-vue";
 import styles from "./styles.module.scss";
+import { TaskCardItem } from "../../../../shared/api";
 
-interface IItem {
-    id: number;
-    title: string;
-    description: string;
-    checked: boolean;
-    date_start: string;
-    date_end: string;
-    date_time: string;
-}
-
-const props = defineProps<{ item: IItem }>();
+const props = defineProps<{ item: TaskCardItem }>();
 </script>
