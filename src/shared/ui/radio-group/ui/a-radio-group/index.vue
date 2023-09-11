@@ -30,7 +30,7 @@ import { RadioGroup, RadioButton, Layout } from "ant-design-vue";
 import { useRoute } from "vue-router";
 import { useRadio } from "../../../radio-group";
 import styles from "./styles.module.scss";
-import { reactive, watch } from "vue";
+import { onMounted, reactive, watch } from "vue";
 import { Pages } from "../../../../api";
 
 const radioStore = useRadio();
@@ -39,6 +39,13 @@ const pages = reactive<Pages>({
     1: "/",
     2: "/finished",
     3: "/unfinished",
+});
+onMounted(() => {
+    window.onload = () => {
+        if (route.path === "/") {
+            radioStore.activeValue = Object.keys(pages)[0];
+        }
+    };
 });
 watch(
     () => route.path,
