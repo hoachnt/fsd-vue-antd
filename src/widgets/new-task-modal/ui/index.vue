@@ -75,7 +75,7 @@ import { defineAsyncComponent } from "vue";
 // import { IMPORTS } from "../../../shared/api/config";
 
 const LazyLoadModal = defineAsyncComponent(
-    () => import("../../../shared/ui/lazy-load-modal")
+    () => import("../../../shared/ui/lazy-load-modal/ui/index.vue")
 );
 const addTaskStore = taskFeatureAddModel();
 const modalStore = modalModel();
