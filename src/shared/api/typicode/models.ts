@@ -17,6 +17,9 @@ export interface TaskCardItem extends Task {
 export type Pages = {
     [key: number]: string;
 }
+export type PagesForRadioGroup = {
+    [key: string]: number;
+}
 export interface RouteTransition {
     transition: string
 }

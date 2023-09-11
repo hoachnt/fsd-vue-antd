@@ -6,13 +6,19 @@
             button-style="solid"
         >
             <div v-if="!route.path.includes('task')">
-                <RadioButton value="/" @click="$router.push('/')"
+                <RadioButton
+                    :value="Object.keys(pages)[0]"
+                    @click="$router.push('/')"
                     >All Taks</RadioButton
                 >
-                <RadioButton value="/finished" @click="$router.push('/finished')"
+                <RadioButton
+                    :value="Object.keys(pages)[1]"
+                    @click="$router.push('/finished')"
                     >Finished Tasks</RadioButton
                 >
-                <RadioButton value="/unfinished" @click="$router.push('/unfinished')"
+                <RadioButton
+                    :value="Object.keys(pages)[2]"
+                    @click="$router.push('/unfinished')"
                     >Unfinished Tasks</RadioButton
                 >
             </div>
@@ -24,15 +30,26 @@ import { RadioGroup, RadioButton, Layout } from "ant-design-vue";
 import { useRoute } from "vue-router";
 import { useRadio } from "../../../radio-group";
 import styles from "./styles.module.scss";
-import { watch } from "vue";
+import { reactive, watch } from "vue";
+import { Pages } from "../../../../api";
 
 const radioStore = useRadio();
 const route = useRoute();
-
+const pages = reactive<Pages>({
+    1: "/",
+    2: "/finished",
+    3: "/unfinished",
+});
 watch(
     () => route.path,
     (newPath) => {
-        radioStore.activeValue = newPath;
+        if (newPath === "/") {
+            radioStore.activeValue = Object.keys(pages)[0];
+        } else if (newPath === "/finished") {
+            radioStore.activeValue = Object.keys(pages)[1];
+        } else if (newPath === "/unfinished") {
+            radioStore.activeValue = Object.keys(pages)[2];
+        }
     }
 );
 </script>
