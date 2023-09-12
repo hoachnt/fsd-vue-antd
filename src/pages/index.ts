@@ -1,43 +1,20 @@
-import { defineAsyncComponent } from "vue";
 import Routing from "./index.vue";
-import { Spin } from "ant-design-vue";
-
-const TaskListPage = defineAsyncComponent({
-    loader: () => import("./task-list-page"),
-    loadingComponent: Spin,
-})
-const FinishedTasksPage = defineAsyncComponent({
-    loader: () => import("./finished-tasks-page"),
-    loadingComponent: Spin
-})
-const UnFinishedTasksPage = defineAsyncComponent({
-    loader: () => import("./unFinished-tasks-page"),
-    loadingComponent: Spin
-})
-const TaskPage = defineAsyncComponent({
-    loader: () => import("./task-page"),
-    loadingComponent: Spin
-})
 
 export const routes = [
-    {
-        path: "/",
-        component: TaskListPage,
-        name: "Home",
-    },
+    { path: "/", component: () => import("./task-list-page"), name: "Home", },
     {
         path: "/finished",
-        component: FinishedTasksPage,
+        component: () => import("./finished-tasks-page"),
         name: "Finished Tasks",
     },
     {
         path: "/unfinished",
-        component: UnFinishedTasksPage,
+        component: () => import("./unFinished-tasks-page"),
         name: "Unfinished Tasks",
     },
     {
         path: "/task/:id",
-        component: TaskPage,
+        component: () => import("./task-page"),
         name: "Task Details",
         meta: {
             transition: "from-top"
