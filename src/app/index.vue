@@ -10,7 +10,9 @@ const route = useRoute();
 <template>
     <div class="app">
         <SwipeGesture>
-            <ARadioGroup v-if="!route.path.includes('task')" />
+            <transition name="from-top">
+                <ARadioGroup v-if="!route.path.includes('task')" />
+            </transition>
             <Routing />
         </SwipeGesture>
     </div>
