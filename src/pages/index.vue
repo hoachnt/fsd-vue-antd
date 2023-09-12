@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { Spin } from "ant-design-vue";
-import { RouteMeta, RouterView } from "vue-router";
+import { RouteMeta, RouterView, useRouter } from "vue-router";
 import { MainLoader } from "../shared/ui/loader/ui/main-loader";
+import { ref } from "vue";
+
+const router = useRouter();
+const isShowLoader = ref(false);
 
 const getTransitionName = (transitionMeta: RouteMeta) => {
     if (
@@ -14,6 +18,13 @@ const getTransitionName = (transitionMeta: RouteMeta) => {
     }
     return "fade";
 };
+
+router.beforeEach(() => {
+    isShowLoader.value = true;
+});
+router.afterEach(() => {
+    isShowLoader.value = false;
+});
 </script>
 
 <template>
@@ -28,7 +39,7 @@ const getTransitionName = (transitionMeta: RouteMeta) => {
                 </Suspense>
             </Transition>
         </template>
-        <template v-else>
+        <template v-if="isShowLoader">
             <MainLoader />
         </template>
     </RouterView>
