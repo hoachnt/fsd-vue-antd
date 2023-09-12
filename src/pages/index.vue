@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { Spin } from "ant-design-vue";
 import { RouteMeta, RouterView } from "vue-router";
-import { LoaderModal } from "../shared/ui/modal";
+import { MainLoader } from "../shared/ui/loader/ui/main-loader";
 
 const getTransitionName = (transitionMeta: RouteMeta) => {
     if (
@@ -23,9 +24,12 @@ const getTransitionName = (transitionMeta: RouteMeta) => {
                     <template #default>
                         <component :is="Component" />
                     </template>
-                    <template #fallback> <LoaderModal /> </template>
+                    <template #fallback> <Spin /> </template>
                 </Suspense>
             </Transition>
+        </template>
+        <template v-else>
+            <MainLoader />
         </template>
     </RouterView>
 </template>
