@@ -39,11 +39,9 @@ const pages = reactive<Pages>({
     3: "/unfinished",
 });
 onMounted(() => {
-    window.onload = () => {
-        if (route.path === "/") {
-            radioStore.activeValue = Object.keys(pages)[0];
-        }
-    };
+    if (route.path === "/") {
+        radioStore.activeValue = Object.keys(pages)[0];
+    }
 });
 watch(
     () => route.path,
