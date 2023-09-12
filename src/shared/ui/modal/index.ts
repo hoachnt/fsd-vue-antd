@@ -1,1 +1,1 @@
-export * from "./ui"
+export * from "./a-modal"
