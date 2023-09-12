@@ -1,0 +1,9 @@
+.layout {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.layout > div {
+    width: clamp(300px, 100%, 900px);
+}

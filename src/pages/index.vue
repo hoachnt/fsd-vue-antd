@@ -17,17 +17,14 @@ const getTransitionName = (transitionMeta: RouteMeta) => {
 
 <template>
     <RouterView v-slot="{ Component, route }">
-        <template v-if="Component">
-            <Transition :name="getTransitionName(route.meta)">
-                <Suspense>
-                    <!-- main content -->
+        <Transition :name="getTransitionName(route.meta)">
+            <Suspense>
+                <template #default>
                     <component :is="Component" />
-
-                    <!-- loading state -->
-                    <template #fallback> <Spin /> </template>
-                </Suspense>
-            </Transition>
-        </template>
+                </template>
+                <template #fallback> <Spin /> </template>
+            </Suspense>
+        </Transition>
     </RouterView>
 </template>
 <style></style>

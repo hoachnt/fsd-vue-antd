@@ -5,23 +5,21 @@
             :class="styles.radio_group"
             button-style="solid"
         >
-            <div v-if="!route.path.includes('task')">
-                <RadioButton
-                    :value="Object.keys(pages)[0]"
-                    @click="$router.push('/')"
-                    >All Taks</RadioButton
-                >
-                <RadioButton
-                    :value="Object.keys(pages)[1]"
-                    @click="$router.push('/finished')"
-                    >Finished Tasks</RadioButton
-                >
-                <RadioButton
-                    :value="Object.keys(pages)[2]"
-                    @click="$router.push('/unfinished')"
-                    >Unfinished Tasks</RadioButton
-                >
-            </div>
+            <RadioButton
+                :value="Object.keys(pages)[0]"
+                @click="$router.push('/')"
+                >All Taks</RadioButton
+            >
+            <RadioButton
+                :value="Object.keys(pages)[1]"
+                @click="$router.push('/finished')"
+                >Finished Tasks</RadioButton
+            >
+            <RadioButton
+                :value="Object.keys(pages)[2]"
+                @click="$router.push('/unfinished')"
+                >Unfinished Tasks</RadioButton
+            >
         </RadioGroup>
     </Layout>
 </template>
