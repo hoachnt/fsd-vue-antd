@@ -1,5 +1,9 @@
 import { createApp } from "vue";
-import { router, store } from "./providers";
+import { registerComponents, router, store } from "./providers";
 import App from "./index.vue";
 
-export const app = createApp(App).use(router).use(store);
+const initializeApp = createApp(App).use(router).use(store);
+
+registerComponents(initializeApp)
+
+export const app = initializeApp
