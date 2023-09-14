@@ -15,7 +15,7 @@ import { Spin } from "ant-design-vue";
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;

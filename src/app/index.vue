@@ -13,7 +13,9 @@ const route = useRoute();
             <transition name="from-top">
                 <ARadioGroup v-if="!route.path.includes('task')" />
             </transition>
-            <Routing />
+            <main>
+                <Routing />
+            </main>
         </SwipeGesture>
     </div>
 </template>
