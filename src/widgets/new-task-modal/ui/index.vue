@@ -43,6 +43,7 @@
             show-time
             :class="styles.input"
             size="large"
+            style="min-width: 100%;"
         />
         <RangePicker
             v-if="
