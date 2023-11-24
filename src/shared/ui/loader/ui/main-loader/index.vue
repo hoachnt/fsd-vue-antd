@@ -1,7 +1,7 @@
 <template>
     <teleport to="body">
         <div class="loader-component">
-            <Spin size="large" />
+            <Spin size="large"  />
         </div>
     </teleport>
 </template>
@@ -15,7 +15,7 @@ import { Spin } from "ant-design-vue";
     position: fixed;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
