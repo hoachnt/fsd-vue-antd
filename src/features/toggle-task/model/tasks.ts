@@ -18,7 +18,7 @@ export const useFeatureCheckedTaskStore = defineStore(
 
         await axios({
           method: "patch",
-          url: `${url}/${checkedTask.id}/`,
+          url: `${url}/${checkedTask.id}`,
           data: {
             checked: !checkedTask.checked,
           },

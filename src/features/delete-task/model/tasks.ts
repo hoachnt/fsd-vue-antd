@@ -17,7 +17,7 @@ export const useFeatureDeleteTaskStore = defineStore(
       try {
         taskStore.loading = true;
 
-        await axios.delete(`${url}/${id}/`);
+        await axios.delete(`${url}/${id}`);
 
         taskStore.loading = false;
 
