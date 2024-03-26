@@ -33,7 +33,7 @@ export const useFeatureAddTaskStore = defineStore("tasksAddFeature", () => {
       validation.value = false;
       loading.value = true;
 
-      await axios.post(`${url}/`, data);
+      await axios.post(`${url}`, data);
       await taskStore.getTaskList();
 
       loading.value = false;
