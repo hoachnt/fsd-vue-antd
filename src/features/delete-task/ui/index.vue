@@ -12,4 +12,3 @@ const props = defineProps({
   id: Number,
 });
 </script>
-../../../shared/ui/button
